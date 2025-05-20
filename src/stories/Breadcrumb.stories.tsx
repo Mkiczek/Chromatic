@@ -1,49 +1,78 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-    Breadcrumb,
-    BreadcrumbEllipsis,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-  } from '@/components/ui/breadcrumb';
-  import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger } from '@/components/ui/dropdown-menu.tsx';
-import { Button } from '@/components/ui/button';
+import { ArrowRightSquare } from "lucide-react"
 
-const meta: Meta = {
-    title: 'Components/Breadcrumb',
-    component: Breadcrumb,
-    tags: ['autodocs'],
-  };
-  
-  export default meta;
-  
-  type Story = StoryObj<typeof Breadcrumb>;
-  
-  export const Default: Story = {
-    render: () => (
-      <div className="p-6">
-        <Breadcrumb>
-          {/* Breadcrumb navigation structure */}
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator></BreadcrumbSeparator>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/policies">Policies</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator></BreadcrumbSeparator>
-            <BreadcrumbItem>
-              <BreadcrumbPage><strong>Policy #12345</strong></BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </div>
-    ),
-  };
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+
+/**
+ * Displays the path to the current resource using a hierarchy of links.
+ */
+const meta = {
+  title: "ui/Breadcrumb",
+  component: Breadcrumb,
+  tags: ["autodocs"],
+  argTypes: {},
+  args: {},
+  render: (args) => (
+    <Breadcrumb {...args}>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink>Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink>Components</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+  ),
+  parameters: {
+    layout: "centered",
+  },
+} satisfies Meta<typeof Breadcrumb>
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+/**
+ * Displays the path of links to the current resource.
+ */
+export const Default: Story = {}
+
+/**
+ * Displays the path with a custom icon for the separator.
+ */
+export const WithCustomSeparator: Story = {
+  render: (args) => (
+    <Breadcrumb {...args}>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink>Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator>
+          <ArrowRightSquare />
+        </BreadcrumbSeparator>
+        <BreadcrumbItem>
+          <BreadcrumbLink>Components</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator>
+          <ArrowRightSquare />
+        </BreadcrumbSeparator>
+        <BreadcrumbItem>
+          <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+  ),
+}
