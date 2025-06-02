@@ -4,7 +4,9 @@ import { DataTable } from "@/components/data-table"
 import { SectionCards } from "@/components/section-cards"
 import { SiteHeader } from "@/components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
-import { Button} from "@/components/ui/button"
+import { Button} from "@/components/ui/button.tsx"
+import { DatePicker } from "@/components/ui/date-picker.tsx"
+import { Slider } from "@/components/ui/slider.tsx";
 
 
 import data from "./data.json"
@@ -14,7 +16,8 @@ export default function Page() {
     <SidebarProvider>
       <AppSidebar variant="inset" />
       <SidebarInset>
-      <Button>Button</Button>
+     <Slider />
+    
 
         <SiteHeader />
         <div className="flex flex-1 flex-col">
@@ -25,6 +28,7 @@ export default function Page() {
                 <ChartAreaInteractive />
               </div>
               <DataTable data={data} />
+              <DatePicker />
             </div>
           </div>
         </div>
