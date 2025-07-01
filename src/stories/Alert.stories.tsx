@@ -14,7 +14,7 @@ type Story = StoryObj<typeof Alert>;
 
 export const InfoAlert: Story = {
   render: () => (
-    <Alert>
+    <Alert variant='info'>
       <Info className="h-4 w-4" />
       <AlertTitle>Heads up!</AlertTitle>
       <AlertDescription>This is an info alert.</AlertDescription>
@@ -44,7 +44,7 @@ export const WarningAlert: Story = {
 
 export const ErrorAlert: Story = {
   render: () => (
-    <Alert>
+    <Alert variant='destructive'>
       <XCircle className="h-4 w-4 text-red-600" />
       <AlertTitle>Error</AlertTitle>
       <AlertDescription>Something went wrong.</AlertDescription>
