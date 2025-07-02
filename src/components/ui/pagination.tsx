@@ -34,7 +34,9 @@ function PaginationContent({
 }
 
 function PaginationItem({ ...props }: React.ComponentProps<"li">) {
-  return <li data-slot="pagination-item" {...props} />
+  return <li 
+  data-slot="pagination-item" 
+  {...props} />
 }
 
 type PaginationLinkProps = {
@@ -53,9 +55,9 @@ function PaginationLink({
       aria-current={isActive ? "page" : undefined}
       data-slot="pagination-link"
       data-active={isActive}
-      className={cn( "bg-(--primary) rounded-none",
+      className={cn( "bg-secondary rounded-none",
         buttonVariants({
-          variant: isActive ? "outline" : "ghost",
+          variant: isActive ? "default" : "ghost",
           size,
         }),
         className
