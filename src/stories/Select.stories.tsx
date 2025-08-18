@@ -9,6 +9,8 @@ import {
     SelectTrigger,
     SelectValue,
   } from '@/components/ui/select';
+import { SelectForm } from '@/components/select-form';
+import { SelectScrollable } from '@/components/select-scrollable';
 
   /**
  * Displays a list of options for the user to pick from—triggered by a button.
@@ -67,3 +69,13 @@ const meta: Meta<typeof Select> = {
    * The default form of the select.
    */
   export const Default: Story = {}
+
+  export const WithForm: StoryObj = {
+    name: "Select Form",
+    render: () => <SelectForm />,
+  }
+
+  export const Scroll: StoryObj = {
+    name: "Select Scrollable",
+    render: () => <SelectScrollable />,
+  }

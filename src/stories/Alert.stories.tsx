@@ -1,53 +1,148 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Info, CheckCircle, AlertTriangle, XCircle } from 'lucide-react';
+// Alert.stories.tsx
+import type { Meta, StoryObj } from "@storybook/react"
+import * as React from "react"
+import { Bell, AlertCircle, CheckCircle2, AlertTriangle, AlertOctagon, XCircle } from "lucide-react"
 
-const meta: Meta<typeof Alert> = {
-  title: 'Components/Alert',
-  component: Alert,
-  tags: ['autodocs'],
-};
+import { Alert, AlertTitle, AlertDescription, DismissibleAlert } from '@/components/ui/alert'
 
-export default meta;
+type Variant = "default" | "info" | "success" | "warning" | "destructive"
 
-type Story = StoryObj<typeof Alert>;
+type AlertArgs = {
+  variant: Variant
+  title: string
+  description: string
+  includeIcon: boolean
+  dismissible: boolean
+  className?: string
+}
+
+const variantIcon: Record<Variant, React.ReactNode> = {
+  default: <Bell aria-hidden />,
+  info: <AlertCircle aria-hidden />,
+  success: <CheckCircle2 aria-hidden />,
+  warning: <AlertTriangle aria-hidden />,
+  destructive: <AlertOctagon aria-hidden />,
+}
+
+const renderAlert = (args: AlertArgs) => {
+  const { variant, title, description, includeIcon, dismissible, className } = args
+  const Content = (
+    <>
+      {includeIcon ? variantIcon[variant] : null}
+      {title ? <AlertTitle>{title}</AlertTitle> : null}
+      {description ? <AlertDescription>{description}</AlertDescription> : null}
+    </>
+  )
+  return dismissible ? (
+    <DismissibleAlert variant={variant} className={className}>
+      {Content}
+    </DismissibleAlert>
+  ) : (
+    <Alert variant={variant} className={className}>
+      {Content}
+    </Alert>
+  )
+}
+
+const meta = {
+  title: "Components/Alert",
+  // 👇 Pin the base so deep links always start with "components-alert"
+  id: "components-alert",
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
+  args: {
+    variant: "default" as Variant,
+    title: "Heads up!",
+    description: "This is a general message with supporting details.",
+    includeIcon: true,
+    dismissible: false,
+    className: "",
+  },
+  argTypes: {
+    variant: { control: { type: "select" }, options: ["default", "info", "success", "warning", "destructive"] },
+    title: { control: "text" },
+    description: { control: "text" },
+    includeIcon: { control: "boolean" },
+    dismissible: { control: "boolean" },
+    className: { control: "text" },
+  },
+  render: (args: AlertArgs) => renderAlert(args),
+} satisfies Meta<AlertArgs>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+// 👇 Export names define the suffixes:
+// components-alert--success-alert (this is the one your link expects)
+export const SuccessAlert: Story = {
+  name: "Success",
+  args: {
+    variant: "success",
+    title: "Success!",
+    description: "Your changes have been saved.",
+    includeIcon: true,
+    dismissible: true,
+  },
+}
 
 export const InfoAlert: Story = {
-  render: () => (
-    <Alert variant='info'>
-      <Info className="h-4 w-4" />
-      <AlertTitle>Heads up!</AlertTitle>
-      <AlertDescription>This is an info alert.</AlertDescription>
-    </Alert>
-  ),
-};
+  name: "Info",
+  args: {
+    variant: "info",
+    title: "FYI",
+    description: "Informational alert with context users should know.",
+    includeIcon: true,
+    dismissible: true,
+  },
+}
 
-export const SuccessAlert: Story = {
-  render: () => (
-    <Alert>
-      <CheckCircle className="h-4 w-4 text-green-600" />
-      <AlertTitle>Success!</AlertTitle>
-      <AlertDescription>Your operation was completed successfully.</AlertDescription>
-    </Alert>
-  ),
-};
+export const DefaultAlert: Story = {
+  name: "Default",
+  args: {
+    variant: "default",
+    title: "Heads up!",
+    description: "Neutral message with supporting details.",
+    includeIcon: true,
+    dismissible: true,
+  },
+}
 
 export const WarningAlert: Story = {
-  render: () => (
-    <Alert>
-      <AlertTriangle className="h-4 w-4 text-yellow-600" />
-      <AlertTitle>Warning!</AlertTitle>
-      <AlertDescription>You should double-check your settings.</AlertDescription>
-    </Alert>
-  ),
-};
+  name: "Warning",
+  args: {
+    variant: "warning",
+    title: "Careful…",
+    description: "Double-check these details before proceeding.",
+    includeIcon: true,
+    dismissible: true,
+  },
+}
 
-export const ErrorAlert: Story = {
-  render: () => (
-    <Alert variant='destructive'>
-      <XCircle className="h-4 w-4 text-red-600" />
-      <AlertTitle>Error</AlertTitle>
-      <AlertDescription>Something went wrong.</AlertDescription>
-    </Alert>
-  ),
-};
+
+export const DestructiveAltIcon: Story = {
+  name: "Destructive",
+  render: (args) => {
+    const Content = (
+      <>
+        <XCircle aria-hidden />
+        <AlertTitle>{args.title}</AlertTitle>
+        <AlertDescription>{args.description}</AlertDescription>
+      </>
+    )
+    return args.dismissible ? (
+      <DismissibleAlert variant="destructive" className={args.className}>
+        {Content}
+      </DismissibleAlert>
+    ) : (
+      <Alert variant="destructive" className={args.className}>
+        {Content}
+      </Alert>
+    )
+  },
+  args: {
+    title: "Critical failure",
+    description: "Action required. Investigate immediately.",
+    includeIcon: true, // not used here
+    dismissible: true,
+  },
+}

@@ -30,23 +30,33 @@ const meta = {
    */
   export const Default: Story = {}
   
-  /**
+
+   /**
    * Use the `secondary` badge to call for less urgent information, blending
    * into the interface while still signaling minor updates or statuses.
    */
-  export const Secondary: Story = {
+   export const Informational: Story = {
     args: {
-      variant: "secondary",
+      variant: "informational",
     },
   }
+     /**
+   * Use the `secondary` badge to call for less urgent information, blending
+   * into the interface while still signaling minor updates or statuses.
+   */
+     export const Warning: Story = {
+      args: {
+        variant: "warning",
+      },
+    }
   
   /**
    * Use the `destructive` badge to  indicate errors, alerts, or the need for
    * immediate attention.
    */
-  export const Destructive: Story = {
+  export const Error: Story = {
     args: {
-      variant: "destructive",
+      variant: "error",
     },
   }
   
@@ -54,8 +64,8 @@ const meta = {
    * Use the `outline` badge for overlaying without obscuring interface details,
    * emphasizing clarity and subtlety..
    */
-  export const Outline: Story = {
+  export const Success: Story = {
     args: {
-      variant: "outline",
+      variant: "success",
     },
   }

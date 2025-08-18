@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button"
 
 const meta: Meta<typeof Drawer> = {
-  title: "ui/Drawer",
+  title: "Components/Drawer",
   component: Drawer,
   tags: ["autodocs"],
   parameters: {

@@ -7,7 +7,7 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { Button} from "@/components/ui/button.tsx"
 import { DatePicker } from "@/components/ui/date-picker.tsx"
 import { Slider } from "@/components/ui/slider.tsx";
-
+import UnderwriterDashboard from "@/components/dasher"
 
 import data from "./data.json"
 
@@ -16,8 +16,8 @@ export default function Page() {
     <SidebarProvider>
       <AppSidebar variant="inset" />
       <SidebarInset>
-     <Slider />
-    
+     
+    <UnderwriterDashboard />
 
         <SiteHeader />
         <div className="flex flex-1 flex-col">
