@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { TabNav, TabNavList, TabNavLink } from '@/components/ui/tab-nav';
 
 const meta: Meta = {

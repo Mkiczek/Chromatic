@@ -1,5 +1,5 @@
 // Alert.stories.tsx
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react-vite"
 import * as React from "react"
 import { Bell, AlertCircle, CheckCircle2, AlertTriangle, AlertOctagon, XCircle } from "lucide-react"
 

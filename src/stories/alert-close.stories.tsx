@@ -1,5 +1,5 @@
 // Alert.stories.tsx
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react-vite"
 import * as React from "react"
 
 // Adjust these paths to match your project layout
@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 const meta: Meta<typeof ClosableAlert> = {
   title: "Components/Alert/Closable",
   component: ClosableAlert,
+  tags: ["autodocs"],
   parameters: {
     layout: "centered",
     controls: { hideNoControlsWarning: true },

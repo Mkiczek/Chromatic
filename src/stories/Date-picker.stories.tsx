@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react-vite"
 
 import { DatePicker} from "../components/ui/date-picker"
 
@@ -6,6 +6,7 @@ import { DatePicker} from "../components/ui/date-picker"
 const meta: Meta<typeof DatePicker> = {
     title: "Components/Date Picker",
     component: DatePicker,
+    tags: ["autodocs"],
     parameters: {
       control: {
         type: 'boolean',

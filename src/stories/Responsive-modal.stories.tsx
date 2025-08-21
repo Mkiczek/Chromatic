@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react-vite"
 import * as React from "react"
 import { Button } from "@/components/ui/button"
 import {
@@ -15,6 +15,7 @@ import {
 const meta: Meta<typeof ResponsiveModal> = {
   title: "Components/ResponsiveModal",
   component: ResponsiveModal,
+  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
