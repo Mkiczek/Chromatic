@@ -34,25 +34,6 @@ type Story = StoryObj<typeof meta>
  */
 export const Default: Story = {}
 
-/**
- * Use the `outline` button to reduce emphasis on secondary actions, such as
- * canceling or dismissing a dialog.
- */
-export const Outline: Story = {
-  args: {
-    variant: "outline",
-  },
-}
-
-/**
- * Use the `ghost` button is minimalistic and subtle, for less intrusive
- * actions.
- */
-export const Ghost: Story = {
-  args: {
-    variant: "ghost",
-  },
-}
 
 /**
  * Use the `secondary` button to call for less emphasized actions, styled to
@@ -96,7 +77,7 @@ export const Loading: Story = {
     </Button>
   ),
   args: {
-    ...Outline.args,
+   
     disabled: true,
   },
 }
