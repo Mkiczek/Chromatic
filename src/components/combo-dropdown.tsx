@@ -50,7 +50,7 @@ export function ComboboxDropdownMenu() {
       </p>
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="sm">
+          <Button variant="secondary" size="sm">
             <MoreHorizontal />
           </Button>
         </DropdownMenuTrigger>

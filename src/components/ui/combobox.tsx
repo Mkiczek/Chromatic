@@ -2,6 +2,8 @@
 
 import * as React from "react"
 import { Check, ChevronsUpDown } from "lucide-react"
+import { Label } from "@/components/ui/label"
+import { useState } from "react";
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -19,76 +21,70 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-]
+type MyComboboxProps = {
+  label?: string;
+  value: string;
+  setValue: (value: string) => void;
+  values: { label: string; value: string }[];
+  inputDisabled?: boolean;
+  inputPlaceholder?: string;
+};
 
-export function ComboboxDemo() {
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("")
+export const MyCombobox: React.FC<MyComboboxProps> = (props) => {
+  const [open, setOpen] = useState(false);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className="w-[200px] justify-between"
-        >
-          {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."}
-          <ChevronsUpDown className="opacity-50" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <div className="flex flex-col w-full">
+        {props.label && <Label className="mb-1">{props.label}</Label>}
+        <PopoverTrigger asChild>
+          <Button
+            variant="secondary"
+            role="combobox"
+            aria-expanded={open}
+            className=" justify-between"
+          >
+            {props.value
+              ? props.values.find((item) => item.value === props.value)?.label
+              : props.label + "..."}
+            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          </Button>
+        </PopoverTrigger>
+      </div>
+      <PopoverContent
+        className={"popover-content-width-same-as-its-trigger p-0"}
+      >
         <Command>
-          <CommandInput placeholder="Search framework..." className="h-9" />
-          <CommandList>
-            <CommandEmpty>No framework found.</CommandEmpty>
-            <CommandGroup>
-              {frameworks.map((framework) => (
+          {props.inputDisabled && (
+            <CommandInput placeholder={props.inputPlaceholder} />
+          )}
+          <CommandEmpty>NOTHING_FOUND</CommandEmpty>
+          <CommandGroup>
+            <CommandList>
+              {props.values.map((item) => (
                 <CommandItem
-                  key={framework.value}
-                  value={framework.value}
+                  key={item.value}
+                  value={item.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue)
-                    setOpen(false)
+                    props.setValue(
+                      currentValue === props.value ? "" : currentValue
+                    );
+                    setOpen(false);
                   }}
                 >
-                  {framework.label}
                   <Check
                     className={cn(
-                      "ml-auto",
-                      value === framework.value ? "opacity-100" : "opacity-0"
+                      "mr-2 h-4 w-4",
+                      props.value === item.value ? "opacity-100" : "opacity-0"
                     )}
                   />
+                  {item.label}
                 </CommandItem>
               ))}
-            </CommandGroup>
-          </CommandList>
+            </CommandList>
+          </CommandGroup>
         </Command>
       </PopoverContent>
     </Popover>
-  )
-}
+  );
+};
