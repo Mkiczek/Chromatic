@@ -45,6 +45,11 @@ export const Secondary: Story = {
   },
 }
 
+export const Ghost: Story = {
+  args: {
+    variant: "ghost",
+  }
+}
 /**
  * Use the `destructive` button to indicate errors, alerts, or the need for
  * immediate attention.
@@ -89,11 +94,11 @@ export const Loading: Story = {
 export const WithIcon: Story = {
   render: (args) => (
     <Button {...args}>
-      <Mail className="mr-2 h-4 w-4" /> Login with Email Button
+      <Mail className="mr-2 h-4 w-4" /> Login with Email
     </Button>
   ),
   args: {
-    ...Secondary.args,
+    ...Default.args,
   },
 }
 
@@ -122,17 +127,15 @@ export const Large: Story = {
  */
 export const Icon: Story = {
   args: {
-    ...Secondary.args,
+    ...Default.args,
     size: "icon",
     children: <Mail />,
   },
 }
 
-/**
- * Add the `disabled` prop to prevent interactions with the button.
- */
-export const Disabled: Story = {
+
+export const Subtle: Story = {
   args: {
-    disabled: true,
+    variant: "subtle",
   },
 }

@@ -16,7 +16,7 @@ import {
     return (
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button variant="outline">Show Dialog</Button>
+          <Button variant="secondary">Show Dialog</Button>
         </AlertDialogTrigger>
         <AlertDialogContent className="overflow-hidden">
           <AlertDialogHeader className="pb-4">

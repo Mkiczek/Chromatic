@@ -16,7 +16,7 @@ import {
     return (
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button variant="outline">Show Dialog</Button>
+          <Button variant="secondary">Show Dialog</Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <div className="-mt-3 -mx-6 border-b pb-3 px-6 flex justify-between items-center">
@@ -33,8 +33,8 @@ import {
           </div>
           <AlertDialogHeader className="pt-2">
             <AlertDialogTitle>
-              <div className="mx-auto sm:mx-0 mb-4 flex h-9 w-9 items-center justify-center rounded-full bg-destructive/10">
-                <OctagonAlert className="h-5 w-5 text-destructive" />
+              <div className="mx-auto sm:mx-0 mb-4 flex h-9 w-9 items-center justify-center rounded-full bg-propose-red-10">
+                <OctagonAlert className="h-5 w-5 text-propose-red-50" />
               </div>
               Are you absolutely sure?
             </AlertDialogTitle>

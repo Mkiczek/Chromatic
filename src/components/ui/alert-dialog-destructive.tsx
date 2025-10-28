@@ -16,13 +16,13 @@ import {
     return (
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button variant="outline">Show Dialog</Button>
+          <Button variant="secondary">Show Dialog</Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader className="items-center">
             <AlertDialogTitle>
-              <div className="mb-2 mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-destructive/10">
-                <OctagonAlert className="h-7 w-7 text-destructive" />
+              <div className="mb-2 mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-propose-red-10">
+                <OctagonAlert className="h-7 w-7 text-propose-red-50" />
               </div>
               Are you absolutely sure?
             </AlertDialogTitle>

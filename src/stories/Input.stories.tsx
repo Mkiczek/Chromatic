@@ -68,12 +68,12 @@ export const WithHelperText: Story = {
 export const Error: Story = {
     render: (args) => (
         <div className="grid items-center gap-1.5">
-          <label htmlFor="email-2" className="text-destructive">{args.placeholder}</label>
+          <label htmlFor="email-2" className="text-red-40">{args.placeholder}</label>
           <Input {...args} id="email-2"
           type= "email"
           placeholder= "Email"
-          className= "border-destructive focus-visible: ring-destructive border: w-96" />
-          <p className= "text-[0.8rem] text-destructive">This is an error.</p>
+          className= "border-red-50 focus-visible: ring-red-50 border: w-96" />
+          <p className= "text-[0.8rem] text-red-40">This is an error.</p>
         </div>
       ),
 }

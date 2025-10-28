@@ -10,21 +10,21 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default:
-          "border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
+          "border-transparent bg-primary text-neutral-white [a&]:hover:bg-brand-primary/10",
           error:
-          "bg-bg-destructive text-destructive border border-destructive",
+          "bg-propose-red-10 text-propose-red-50 border border-propose-red-50",
         secondary:
           "border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
           warning:
-          "bg-bg-warning text-warning border border-warning",
+          "bg-propose-yellow-10 text-propose-yellow-50 border border-propose-yellow-50",
         destructive:
           "bg-bg-destructive text-destructive border border-destructive",
           success:
-          "bg-bg-success text-success border border-success",
+          "bg-propose-green-10 text-propose-green-50 border border-propose-green-50",
         outline:
           "text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
           informational:
-          "bg-bg-informational text-informational border border-informational",
+          "bg-propose-teal-10 text-propose-teal-50 border border-propose-teal-50",
       },
     },
     defaultVariants: {
